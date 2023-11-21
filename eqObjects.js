@@ -9,11 +9,13 @@ const eqArrays = function (arr1, arr2) {
   }
   return true;
 };
+
+// Function that takes two objects(key:value), deep comapres them and returns a boolean
 const eqObjects = function (object1, object2) {
-  let object1Keys = Object.keys(object1);
-  let object2Keys = Object.keys(object2);
+  let objectOneKeys = Object.keys(object1);
+  let objectTwoKeys = Object.keys(object2);
   // Case when objects do not have the same amount of keys
-  if (object1Keys.length !== object2Keys.length) {
+  if (objectOneKeys.length !== objectTwoKeys.length) {
     return false;
   } else {
     for (let i in object1) {
@@ -21,6 +23,15 @@ const eqObjects = function (object1, object2) {
       if (Array.isArray(object1[i]) && Array.isArray(object2[i])) {
         let result = eqArrays(object1[i], object2[i]);
         if (!result) {
+          return false;
+        }
+      } else if (
+        //Case when the value is an object on both looped object elements
+        typeof object1[i] === "object" &&
+        typeof object2[i] === "object"
+      ) {
+        let res = eqObjects(object1[i], object2[i]);
+        if (!res) {
           return false;
         }
       } else {
