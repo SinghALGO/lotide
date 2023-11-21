@@ -6,3 +6,4 @@ const map = function (array, callback = (word) => word[0]) {
   }
   return results;
 };
+module.exports = map;

@@ -8,3 +8,4 @@ const findKey = (object, callback) => {
   }
   return;
 };
+module.exports = findKey;

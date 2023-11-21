@@ -1,15 +1,4 @@
-const eqArrays = function (arr1, arr2) {
-  if (arr1.length !== arr2.length) {
-    return false;
-  }
-  for (let i in arr1) {
-    if (arr1[i] !== arr2[i]) {
-      return false;
-    }
-  }
-  return true;
-};
-
+const eqArrays = require("./eqArrays");
 // Function that takes two objects(key:value), deep comapres them and returns a boolean
 const eqObjects = function (object1, object2) {
   let objectOneKeys = Object.keys(object1);
@@ -44,3 +33,4 @@ const eqObjects = function (object1, object2) {
     return true;
   }
 };
+module.exports = eqObjects;
